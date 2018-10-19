@@ -2,6 +2,10 @@
   "name": "clam-ui",
   "version": "0.1.0",
   "private": true,
+  "repository": {
+    "type" : "git",
+    "url" : "https://github.com/MoonHighway/clam-ui"
+  },
   "dependencies": {
     "react": "^16.5.2",
     "react-dom": "^16.5.2",
