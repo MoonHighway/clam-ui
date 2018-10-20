@@ -1,4 +1,10 @@
 import React from 'react'
+import {
+    BackLink
+} from '../ui'
 
-export const CounselorDetails = () =>
-    <h1>CounselorDetails Screen</h1>
+export const CounselorDetails = ({ id }) =>
+    <section>
+        <h1>CounselorDetails {id}</h1>
+        <BackLink />
+    </section>

@@ -1,4 +1,9 @@
 import React from 'react'
+import { BackLink } from '../ui'
 
-export const Cabin = () =>
-    <h1>Cabin Screen</h1>
+export const Cabin = ({ animal }) =>
+    <section>
+        <h1>Cabin Screen: {animal}</h1>
+        <BackLink />
+    </section>
+    

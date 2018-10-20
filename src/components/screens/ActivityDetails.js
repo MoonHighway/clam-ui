@@ -1,4 +1,20 @@
 import React from 'react'
+import { 
+    BackLink,
+    SportPanel,
+    NaturePanel,
+    ArtsCraftsPanel,
+    GamePanel
+} from '../ui'
 
-export const ActivityDetails = () =>
-    <h1>ActivityDetails Screen</h1>
+export const ActivityDetails = ({ id }) =>
+    <section>
+        <h1>Activity Details</h1>
+        <p>activity id: {id}</p>
+        <SportPanel />
+        <NaturePanel />
+        <ArtsCraftsPanel />
+        <GamePanel />
+        <BackLink />
+    </section>
+    

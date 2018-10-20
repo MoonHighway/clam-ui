@@ -1,19 +1,25 @@
 import React from 'react'
+import { Link } from '@reach/router'
 
-export const ActivityListItem = () =>
-    <h3>Activity List Item</h3>
+export const ActivityListItem = ({ id, title }) =>
+    <div>
+        <h3>{title}</h3>
+        <Link to={`/activity/${id}`}>details</Link>
+    </div>
 
-export const ActivityList = () =>
-    <h3>Activity List</h3>
+export const ActivityList = ({ activities=[] }) =>
+    activities.map(a => 
+        <ActivityListItem {...a} />
+    )
 
 export const SportPanel = () =>
-    <h3>Activity List</h3>    
+    <h3>Sports Panel</h3>    
 
 export const NaturePanel = () =>
-    <h3>Activity List</h3>    
+    <h3>Nature Panel</h3>    
 
 export const ArtsCraftsPanel = () =>
-    <h3>Activity List</h3>    
+    <h3>Arts and Crafts Panel</h3>    
 
 export const GamePanel = () =>
-    <h3>Activity List</h3>    
+    <h3>Game Panel</h3>    

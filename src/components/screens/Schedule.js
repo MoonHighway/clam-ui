@@ -1,4 +1,9 @@
 import React from 'react'
+import { BackLink } from '../ui'
 
 export const Schedule = () =>
-    <h1>Schedule Screen</h1>
+    <section>
+        <h1>Schedule Screen</h1>
+        <BackLink />
+    </section>
+    
