@@ -14,8 +14,10 @@
     "styled-components": "^4.0.2"
   },
   "scripts": {
+    "format": "prettier --write './src/**.js'; prettier --write '**.md'; prettier --write '**.json';",
     "start": "react-scripts start",
     "build": "react-scripts build",
+    "pretest": "npm run format",
     "test": "react-scripts test",
     "eject": "react-scripts eject"
   },
@@ -27,5 +29,8 @@
     "not dead",
     "not ie <= 11",
     "not op_mini all"
-  ]
+  ],
+  "devDependencies": {
+    "prettier": "^1.14.3"
+  }
 }
