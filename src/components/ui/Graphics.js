@@ -16,7 +16,7 @@ export const Logo = () => <h3>Logo</h3>
 export const Grass = () => <h3>Logo</h3>
 
 export const Difficulty = ({ level = 'BEGINNER', height = 30, width = 30 }) => (
-  <img src={difficulty[level]} height={height} width={width} />
+  <img src={difficulty[level]} height={height} width={width} alt={level} />
 )
 
 export const Terrain = () => <h3>Terrain</h3>
