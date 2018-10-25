@@ -1,7 +1,7 @@
 import React from 'react'
 import { Link } from '@reach/router'
 import styled from 'styled-components'
-import { Difficulty } from '../ui'
+import { Difficulty, Terrain } from '../ui'
 
 export const Welcome = () => (
   <Container>
@@ -19,6 +19,15 @@ export const Welcome = () => (
       <Difficulty level="ADVANCED" />
       <Difficulty level="EXPERT" />
     </div>
+    <div>
+      <h2>Terrain Emojis</h2>
+      <br />
+      {'FIELD,MOUNTAIN,FOREST,BEACH,OCEAN,DESERT,POND,INDOORS,THEATER,ICE'
+        .split(',')
+        .map(t => (
+          <Terrain key={t} type={t} />
+        ))}
+    </div>
   </Container>
 )
 
@@ -28,7 +37,7 @@ const Container = styled.section`
   display: flex;
   flex-direction: column;
 
-  * {
+  a {
     margin: 1em 0;
   }
 `
