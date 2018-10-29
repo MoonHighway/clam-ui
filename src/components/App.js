@@ -1,7 +1,7 @@
 import React from 'react'
 import { Router } from '@reach/router'
 
-import { 
+import {
   Welcome,
   Cabin,
   Authorization,
@@ -12,7 +12,7 @@ import {
   Schedule
 } from './screens'
 
-const App = () => 
+const App = () => (
   <Router>
     <Schedule path="/schedule" />
     <CounselorDetails path="/counselor/:id" />
@@ -21,7 +21,8 @@ const App = () =>
     <Activities path="/activities" />
     <Cabin path="/cabin/:animal" />
     <Authorization path="/account" />
-    <Welcome path="/" />    
+    <Welcome path="/" />
   </Router>
+)
 
 export default App
