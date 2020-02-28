@@ -1,3 +1,5 @@
+<p align="center"><img src="https://i.imgur.com/vwbbaoN.png" width="100" /></p>
+
 # Camp Lambda UI (clam-ui)
 
 The Camp Lambda Activity Manager, or CLAM, is an camper activity manager for a
