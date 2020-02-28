@@ -7,23 +7,27 @@
     "url": "https://github.com/MoonHighway/clam-ui"
   },
   "dependencies": {
-    "@reach/router": "^1.2.1",
-    "apollo-boost": "^0.1.20",
+    "@apollo/react-hooks": "^3.1.3",
+    "apollo-cache-inmemory": "^1.6.5",
     "apollo-cache-persist": "^0.1.1",
-    "apollo-link-ws": "^1.0.9",
-    "graphql": "^14.0.2",
-    "react": "^16.5.2",
-    "react-apollo": "^2.3.1",
-    "react-dom": "^16.5.2",
-    "react-scripts": "2.0.5",
-    "styled-components": "^4.0.2",
-    "subscriptions-transport-ws": "^0.9.15"
+    "apollo-client": "^2.6.8",
+    "apollo-link-context": "^1.0.19",
+    "apollo-link-http": "^1.5.16",
+    "apollo-link-ws": "^1.0.19",
+    "apollo-utilities": "^1.3.3",
+    "graphql": "^14.6.0",
+    "graphql-tag": "^2.10.3",
+    "react": "^16.13.0",
+    "react-dom": "^16.13.0",
+    "react-router": "^5.1.2",
+    "react-router-dom": "^5.1.2",
+    "react-scripts": "^3.4.0",
+    "styled-components": "^5.0.1",
+    "subscriptions-transport-ws": "^0.9.16"
   },
   "scripts": {
-    "format": "prettier --write '**/*.js'; prettier --write '**/*.md'; prettier --write '**/*.json';",
     "start": "react-scripts start",
     "build": "react-scripts build",
-    "pretest": "npm run format",
     "test": "react-scripts test",
     "eject": "react-scripts eject"
   },
@@ -35,8 +39,5 @@
     "not dead",
     "not ie <= 11",
     "not op_mini all"
-  ],
-  "devDependencies": {
-    "prettier": "^1.14.3"
-  }
+  ]
 }
