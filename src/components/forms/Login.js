@@ -1,6 +1,6 @@
 import React from 'react'
-import { Query } from 'react-apollo'
-import { gql } from 'apollo-boost'
+import { useQuery } from '@apollo/react-hooks'
+import gql from 'graphql-tag'
 
 const GITHUB_AUTH_LINK = gql`
   query {
@@ -8,12 +8,9 @@ const GITHUB_AUTH_LINK = gql`
   }
 `
 
-export const Login = () => (
-  <Query query={GITHUB_AUTH_LINK}>
-    {({ loading, data, error }) => {
-      if (loading) return <p>loading... </p>
-      if (error) return <p>{error}</p>
-      return <p>{JSON.stringify(data)}</p>
-    }}
-  </Query>
-)
+export const Login = () => {
+  const { data, loading, error } = useQuery(GITHUB_AUTH_LINK)
+  if (loading) return <p>loading... </p>
+  if (error) return <pre>{JSON.stringify(error, null, 2)}</pre>
+  return <pre>{JSON.stringify(data, null, 2)}</pre>
+}

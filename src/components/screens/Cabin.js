@@ -1,9 +1,9 @@
 import React from 'react'
 import { BackLink } from '../ui'
 
-export const Cabin = ({ animal }) => (
+export const Cabin = ({ match }) => (
   <section>
-    <h1>Cabin Screen: {animal}</h1>
+    <h1>Cabin Screen: {match.params.animal}</h1>
     <BackLink />
   </section>
 )
