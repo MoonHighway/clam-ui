@@ -1,43 +1,44 @@
-import React from 'react'
-import { Link } from 'react-router-dom'
-import styled from 'styled-components'
-import { Difficulty, Terrain } from '../ui'
+import React from "react";
+import { Link } from "react-router-dom";
+import styled from "styled-components";
+import { LinkButton } from "../ui/Buttons";
+import { Terrain } from "../ui/Graphics";
 
-export const Welcome = () => (
-  <Container>
-    <h1>Welcome Screen</h1>
+const Nav = () => (
+  <nav>
     <Link to="/activities">Activities</Link>
     <Link to="/counselors">Counselors</Link>
     <Link to="/account">Login</Link>
     <Link to="/account">Account</Link>
-    <Link to="/cabin/sheep">Cabin</Link>
+    <Link to="/cabin">Cabin</Link>
     <Link to="/schedule">Schedule</Link>
+  </nav>
+);
+
+export const Welcome = () => (
+  <Container>
+    <Nav />
     <div>
-      <h2>Difficulty Icons</h2>
-      <Difficulty />
-      <Difficulty level="INTERMEDIATE" />
-      <Difficulty level="ADVANCED" />
-      <Difficulty level="EXPERT" />
-    </div>
-    <div>
-      <h2>Terrain Emojis</h2>
-      <br />
-      {'FIELD,MOUNTAIN,FOREST,BEACH,OCEAN,DESERT,POND,INDOORS,THEATER,ICE'
-        .split(',')
-        .map(t => (
-          <Terrain key={t} type={t} />
-        ))}
+      <h1>Camp Lambda 🏕</h1>
     </div>
   </Container>
-)
+);
 
 const Container = styled.section`
-  /* temporary styles */
-
   display: flex;
   flex-direction: column;
 
-  a {
-    margin: 1em 0;
+  nav {
+    max-width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
   }
-`
+
+  div {
+    display: flex;
+    padding-top: 10%;
+    align-items: center;
+    justify-content: center;
+  }
+`;
