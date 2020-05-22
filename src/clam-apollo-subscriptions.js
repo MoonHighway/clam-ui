@@ -1,6 +1,6 @@
 import { SubscriptionClient } from 'subscriptions-transport-ws'
 import { WebSocketLink } from 'apollo-link-ws'
-import { split } from 'apollo-link'
+import { split } from '@apollo/client'
 import { getMainDefinition } from 'apollo-utilities'
 
 export const wsClient = new SubscriptionClient(

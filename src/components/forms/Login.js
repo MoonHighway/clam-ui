@@ -1,6 +1,5 @@
 import React from 'react'
-import { useQuery } from '@apollo/react-hooks'
-import gql from 'graphql-tag'
+import { useQuery, gql } from '@apollo/client'
 
 const GITHUB_AUTH_LINK = gql`
   query {

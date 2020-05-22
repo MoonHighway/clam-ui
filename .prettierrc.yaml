@@ -1,7 +1,7 @@
-trailingComma: "none"
+trailingComma: 'none'
 tabWidth: 2
-semi: false
-singleQuote: true
+semi: true
+singleQuote: false
 bracketSpacing: true
-arrowParens: "avoid"
-proseWrap: "always"
+arrowParens: 'avoid'
+proseWrap: 'always'

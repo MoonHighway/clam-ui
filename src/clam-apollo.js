@@ -1,13 +1,15 @@
 import React from 'react'
-import { ApolloClient } from 'apollo-client'
-import { ApolloProvider } from '@apollo/react-hooks'
-import { InMemoryCache } from 'apollo-cache-inmemory'
+import {
+  ApolloClient,
+  ApolloProvider,
+  InMemoryCache,
+  HttpLink
+} from '@apollo/client'
 import { setContext } from 'apollo-link-context'
-import { createHttpLink } from 'apollo-link-http'
 import { createSubscriptionLink } from './clam-apollo-subscriptions'
 
 const cache = new InMemoryCache()
-const httpLink = createHttpLink({
+const httpLink = new HttpLink({
   uri: process.env.REACT_APP_GRAPHQL_URI
 })
 const authLink = setContext((_, operation) => {

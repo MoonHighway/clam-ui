@@ -1,5 +1,5 @@
 import { useState } from 'react'
-import { wsClient } from 'clam-apollo-subsctiptions'
+import { wsClient } from 'clam-apollo-subscriptions'
 
 export function useConnectionStatus(client = wsClient) {
   const [status, setStatus] = useState('disconnected')
