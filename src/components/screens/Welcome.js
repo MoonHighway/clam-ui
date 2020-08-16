@@ -1,8 +1,8 @@
 import React from "react";
 import styled from "styled-components";
-import dock from "../../assets/dock.jpg";
 import logo from "../../assets/lambda.png";
 import "../../fonts/Catamaran-ExtraBold.ttf";
+import "../../fonts/Roboto-Regular.ttf";
 
 export const Welcome = () => (
   <Container>
@@ -10,64 +10,46 @@ export const Welcome = () => (
       <a href="#">23 Counselors</a>
       <br />
       <a href="#">114 Activities</a>
-      <button>Sign In</button>
+      <div>
+        <button>Sign In</button>
+      </div>
     </div>
     <div className="logo">
       <h1>Camp Lambda</h1>
+      <img src={logo} height={200} alt="camp lambda logo" />
     </div>
   </Container>
 );
 
 const Container = styled.section`
-  background-image: url(${dock});
-  background-size: cover;
-  display: flex;
-  background-position: bottom;
-  justify-content: space-around;
-  background-repeat: no-repeat;
-  width: 100%;
-  align-items: stretch;
-  @media screen and (max-width: 748px) {
-    flex-direction: column-reverse;
+  display: grid;
+  grid-template-columns: 1fr 2fr;
+  grid-template-rows: 1fr;
+  justify-items: center;
+  .links {
+    grid-area: 1 / 1 / 2 / 2;
+    grid-row-start: 2;
+    button {
+      padding-top: 10px;
+      padding-bottom: 10px;
+      margin-top: 10px;
+      margin-bottom: 10px;
+    }
   }
   .logo {
-    margin: 5%;
-    flex-wrap: wrap;
-    flex: 1.5;
-    align-items: center;
-    background-image: url(${logo});
-    background-size: contain;
-    background-repeat: no-repeat;
+    grid-area: 1 / 2 / 3 / 3;
     h1 {
-      color: white;
       text-align: center;
     }
-    @media screen and (max-width: 748px) {
-      flex: 1;
-      align-items: center;
-      margin-bottom: 0;
-    }
   }
-  .links {
-    border-radius: 5px;
-    margin: 5%;
-    flex: 1;
-    display: flex;
-    align-items: center;
-    flex-direction: column;
-    a {
-      text-decoration: none;
-      color: white;
-      font-family: "Catamaran", sans-serif;
-      font-size: 2em;
-      font-weight: 700;
+  @media only screen and (max-width: 748px) {
+    grid-template-columns: auto;
+    grid-template-rows: 1fr 1fr;
+    .links {
+      grid-row-start: 2;
     }
-    a:first-of-type {
-      margin-top: 45%;
-    }
-    @media screen and (max-width: 748px) {
-      flex: 2;
-      margin-top: 0;
+    .logo {
+      grid-area: 1 / 1 / 2 / 2;
     }
   }
 `;

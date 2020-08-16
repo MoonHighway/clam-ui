@@ -1,17 +1,20 @@
 import { createGlobalStyle } from "styled-components";
 
 export const GlobalStyle = createGlobalStyle`
-  html, body {
-    height: 100%;
+  @font-face {
+    font-family: "Roboto";
+    src: url("./fonts/Roboto-Regular.ttf");
+    font-weight: 400;
   }
-  body, #root {
-    width: 100%;
-    display: flex;
-    justify-content: center;
-    align-items: stretch;
+  @font-face {
+    font-family: "Catamaran";
+    src: url("./fonts/Catamaran-ExtraBold.ttf");
+    font-weight: 700;
   }
-  body, h1, h2, h3, p, td, div, span {
-    margin: 0;
-    padding: 0;
+  body {
+    font-family: "Roboto", sans-serif;
+  }
+  h1 {
+    font-family: "Catamaran";
   }
 `;
