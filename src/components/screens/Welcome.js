@@ -24,7 +24,6 @@ export const Welcome = () => (
       <h1>Camp Lambda</h1>
       <img src={logo} height={200} alt="camp lambda logo" />
     </div>
-    <footer></footer>
   </Container>
 );
 
@@ -41,7 +40,7 @@ const Container = styled.section`
   }
   .login-button {
     grid-area: 2 / 1 / 3 / 2;
-    align-self: end;
+    place-self: end center;
   }
   button {
     height: 50px;
@@ -53,7 +52,7 @@ const Container = styled.section`
   }
   .logo {
     grid-area: 2 / 2 / 2 / 2;
-    align-self: center;
+    align-self: start;
     h1 {
       text-align: center;
       font-size: 2em;
@@ -61,9 +60,11 @@ const Container = styled.section`
   }
   @media only screen and (max-width: 748px) {
     grid-template-columns: 100%;
+    grid-template-rows: 1fr 1fr;
 
     .links {
-      grid-row-start: 1;
+      grid-row-start: 2;
+      align-self: start;
     }
     .login-button {
       grid-row-start: 2;
