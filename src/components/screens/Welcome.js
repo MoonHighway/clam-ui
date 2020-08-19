@@ -1,44 +1,77 @@
 import React from "react";
-import { Link } from "react-router-dom";
 import styled from "styled-components";
-import { LinkButton } from "../ui/Buttons";
-import { Terrain } from "../ui/Graphics";
-
-const Nav = () => (
-  <nav>
-    <Link to="/activities">Activities</Link>
-    <Link to="/counselors">Counselors</Link>
-    <Link to="/account">Login</Link>
-    <Link to="/account">Account</Link>
-    <Link to="/cabin">Cabin</Link>
-    <Link to="/schedule">Schedule</Link>
-  </nav>
-);
+import logo from "../../assets/lambda.png";
+import "../../fonts/Catamaran-ExtraBold.ttf";
+import "../../fonts/Roboto-Regular.ttf";
 
 export const Welcome = () => (
   <Container>
-    <Nav />
-    <div>
-      <h1>Camp Lambda 🏕</h1>
+    <div className="links">
+      <a href="#" onClick={() => alert("To Counselor Page")}>
+        23 Counselors
+      </a>
+      <br />
+      <a href="#" onClick={() => alert("To Activities Page")}>
+        114 Activities
+      </a>
+    </div>
+    <div className="login-button">
+      <button onClick={() => alert("Implement Login")}>
+        Sign In &nbsp;&gt;
+      </button>
+    </div>
+    <div className="logo">
+      <h1>Camp Lambda</h1>
+      <img src={logo} height={200} alt="camp lambda logo" />
     </div>
   </Container>
 );
 
 const Container = styled.section`
-  display: flex;
-  flex-direction: column;
-
-  nav {
-    max-width: 100%;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
+  display: grid;
+  grid-template-columns: 1fr 2fr;
+  grid-template-rows: 1fr 2fr 1fr 0.5fr;
+  justify-items: center;
+  .links {
+    grid-area: 2 / 1 / 3 / 2;
+    text-align: center;
+    font-size: 1.5em;
+    align-self: center;
   }
+  .login-button {
+    grid-area: 2 / 1 / 3 / 2;
+    place-self: end center;
+  }
+  button {
+    height: 50px;
+    width: 100px;
+    border: 3px solid black;
+    border-radius: 5px;
+    background-color: #ffffff;
+    text-transform: uppercase;
+  }
+  .logo {
+    grid-area: 2 / 2 / 2 / 2;
+    align-self: start;
+    h1 {
+      text-align: center;
+      font-size: 2em;
+    }
+  }
+  @media only screen and (max-width: 748px) {
+    grid-template-columns: 100%;
+    grid-template-rows: 1fr 1fr;
 
-  div {
-    display: flex;
-    padding-top: 10%;
-    align-items: center;
-    justify-content: center;
+    .links {
+      grid-row-start: 2;
+      align-self: start;
+    }
+    .login-button {
+      grid-row-start: 2;
+      align-self: center;
+    }
+    .logo {
+      grid-area: 1 / 1 / 2 / 2;
+    }
   }
 `;
