@@ -1,28 +1,29 @@
 import React from 'react'
 import { Thumbnail, BackLink } from '../ui'
-
-const thumb =
-  'https://scontent-sjc3-1.xx.fbcdn.net/v/t1.0-9/15822985_10209615011705397_1587411091808219463_n.jpg?_nc_cat=108&_nc_ht=scontent-sjc3-1.xx&oh=c6e817c8522b73dea03279ac79e31cb9&oe=5C53F59E'
+import { useNavigate } from "react-router-dom"
 
 const placeholderCounselors = [
-  { id: 'DDD', name: 'counselor D', photo: { thumb } },
-  { id: 'EEE', name: 'counselor E', photo: { thumb } },
-  { id: 'FFF', name: 'counselor F', photo: { thumb } }
+  { id: 'shrutikapoor08', name: 'Shruti Kapoor', photo: { thumb: "https://res.cloudinary.com/hmaz4q3oh/image/upload/v1589491019/counselors/shrutikapoor08-thumb.jpg" } },
+  { id: 'maggieappleton', name: 'Maggie Appleton', photo: { thumb: "https://res.cloudinary.com/hmaz4q3oh/image/upload/v1589491019/counselors/maggieappleton-thumb.jpg" } },
+  { id: 'saraviera', name: 'Sara Viera', photo: { thumb: "https://res.cloudinary.com/hmaz4q3oh/image/upload/v1589491019/counselors/saravieira-thumb.jpg" } }
 ]
 
-export const Counselors = ({ navigate }) => (
-  <section>
-    <h1>Counselors Screen</h1>
-    {placeholderCounselors.map((counselor, i) => (
-      <Thumbnail
-        key={i}
-        link={`/counselor/${counselor.id}`}
-        img={counselor.photo.thumb}
-        navigate={navigate}
-      >
-        {counselor.name}
-      </Thumbnail>
-    ))}
-    <BackLink />
-  </section>
-)
+export const Counselors = () => {
+  let navigate = useNavigate()
+  return (
+    <section>
+      <h1>Camp Lambda Counselors</h1>
+      {placeholderCounselors.map((counselor, i) => (
+        <Thumbnail
+          key={i}
+          link={`/counselor/${counselor.id}`}
+          navigate={navigate}
+        >
+          {counselor.name}
+          <img src={counselor.photo.thumb} />
+        </Thumbnail>
+      ))}
+      <BackLink />
+    </section>
+  )
+} 

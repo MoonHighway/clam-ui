@@ -1,6 +1,6 @@
 export * from './Activity'
 export * from './Buttons'
-export * from './Lists'
+export * from './Thumbnail'
 export * from './Loading'
 export * from './Graphics'
 export * from './Schedule'

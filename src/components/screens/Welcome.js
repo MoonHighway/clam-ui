@@ -3,17 +3,18 @@ import styled from "styled-components";
 import logo from "../../assets/lambda.png";
 import "../../fonts/Catamaran-ExtraBold.ttf";
 import "../../fonts/Roboto-Regular.ttf";
+import { Link } from "react-router-dom"
 
 export const Welcome = () => (
   <Container>
     <div className="links">
-      <a href="#" onClick={() => alert("To Counselor Page")}>
+      <Link to={"/counselors"}>
         23 Counselors
-      </a>
+      </Link>
       <br />
-      <a href="#" onClick={() => alert("To Activities Page")}>
+      <Link to={"/activities"}>
         114 Activities
-      </a>
+      </Link>
     </div>
     <div className="login-button">
       <button onClick={() => alert("Implement Login")}>
