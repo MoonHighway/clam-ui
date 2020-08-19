@@ -5,6 +5,8 @@ import "../../fonts/Catamaran-ExtraBold.ttf";
 import "../../fonts/Roboto-Regular.ttf";
 import { Link } from "react-router-dom"
 
+// TODO: Fetch Data from the API for Real
+
 export const Welcome = () => (
   <Container>
     <div className="links">
