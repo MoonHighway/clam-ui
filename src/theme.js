@@ -12,7 +12,8 @@ export const GlobalStyle = createGlobalStyle`
     font-weight: 700;
   }
   body {
-    font-family: "Roboto", sans-serif;
+    font-family: 'RobotoDraft', 'Roboto', sans-serif;
+    background-color: #f2f2f2
   }
   h1 {
     font-family: "Catamaran";
