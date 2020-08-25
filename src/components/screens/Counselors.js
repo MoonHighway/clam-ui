@@ -1,31 +1,80 @@
 import React from 'react'
 import { Thumbnail, BackLink } from '../ui'
 import { useNavigate } from "react-router-dom"
+import { gql, useQuery} from "@apollo/client"
+import styled from "styled-components"
 
-// TODO: Fetch Data from the API for real
-
-const placeholderCounselors = [
-  { id: 'shrutikapoor08', name: 'Shruti Kapoor', photo: { thumb: "https://res.cloudinary.com/hmaz4q3oh/image/upload/v1589491019/counselors/shrutikapoor08-thumb.jpg" } },
-  { id: 'maggieappleton', name: 'Maggie Appleton', photo: { thumb: "https://res.cloudinary.com/hmaz4q3oh/image/upload/v1589491019/counselors/maggieappleton-thumb.jpg" } },
-  { id: 'saraviera', name: 'Sara Viera', photo: { thumb: "https://res.cloudinary.com/hmaz4q3oh/image/upload/v1589491019/counselors/saravieira-thumb.jpg" } }
-]
+const QUERY = gql`
+ query {
+	allCounselors {
+    id
+    name
+    rank
+    photo {
+      thumb
+    }
+  }
+}
+`
 
 export const Counselors = () => {
   let navigate = useNavigate()
+  const {data, loading} = useQuery(QUERY)
+  if (loading) return <p>Loading...</p>
   return (
-    <section>
-      <h1>Camp Lambda Counselors</h1>
-      {placeholderCounselors.map((counselor, i) => (
+    <Container>
+      <div className="header"><h1>Camp Lambda Counselors</h1></div>
+      
+      
+      {data.allCounselors.map((counselor, i) => (
         <Thumbnail
           key={i}
           link={`/counselor/${counselor.id}`}
           navigate={navigate}
         >
-          {counselor.name}
+          <div className="card">
           <img src={counselor.photo.thumb} />
+          <h2>{counselor.name}</h2>
+          </div>
         </Thumbnail>
       ))}
-      <BackLink />
-    </section>
+
+    </Container>
   )
 } 
+
+const Container = styled.section`
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  grid-template-rows: repeat(auto-fill, 1fr);
+  .header {
+    grid-area: 1 / 1 / 2 / 5;
+  }
+  .thumbnail {
+    justify-self: center;
+    height: 16em;
+    width: 20em;
+    margin: 1em;
+  }
+  img {
+    border-radius: 50%;
+    width: 150px;
+    height: 150px;
+    align-self: center;
+  }
+  h2 {
+    text-align: center;
+  }
+  .card {
+    background-color: #FAFAFC;
+    align-items: center;
+    border-radius: 1em;
+    border: 1px solid #D3D3D3;
+  }
+  @media only screen and (max-width: 748px) {
+    grid-template-columns: repeat(1, 1fr);
+    .header {
+      grid-area: 1 / 1 / 2/ 2;
+    }
+  }
+` 
