@@ -1,5 +1,5 @@
 import React from 'react'
-import { Thumbnail, BackLink } from '../ui'
+import { Thumbnail } from '../ui'
 import { useNavigate } from "react-router-dom"
 import { gql, useQuery} from "@apollo/client"
 import styled from "styled-components"
@@ -35,6 +35,7 @@ export const Counselors = () => {
           <div className="card">
           <img src={counselor.photo.thumb} />
           <h2>{counselor.name}</h2>
+          <p>{counselor.rank.replace("_", " ")}</p>
           </div>
         </Thumbnail>
       ))}
@@ -63,6 +64,9 @@ const Container = styled.section`
     align-self: center;
   }
   h2 {
+    text-align: center;
+  }
+  p {
     text-align: center;
   }
   .card {
