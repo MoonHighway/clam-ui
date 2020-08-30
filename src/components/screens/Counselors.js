@@ -61,7 +61,6 @@ const Container = styled.section`
     border-radius: 50%;
     width: 150px;
     height: 150px;
-    align-self: center;
   }
   h2 {
     text-align: center;

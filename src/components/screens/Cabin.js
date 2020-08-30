@@ -12,6 +12,7 @@ const CABIN_QUERY = gql`
       }
       description
       counselor {
+        id
         name
         photo {
           thumb
@@ -69,7 +70,9 @@ export const Cabin = () => {
       <section className="sidebar">
         <h2>Counselor</h2>
         <img src={cabin.counselor.photo.thumb} alt={cabin.counselor.name} />
-        <h4>{cabin.counselor.name}</h4>
+        <h4 onClick={() => navigate(`/counselor/${cabin.counselor.id}`)}>
+          {cabin.counselor.name}
+        </h4>
         <section className="campers">
           <h3>TODO: Add Campers</h3>
         </section>
@@ -85,7 +88,7 @@ const Container = styled.section`
   .header-image {
     grid-area: 1 / 2 / 2 / 4;
     height: 500px;
-    justify-self:center;
+    justify-self: center;
   }
   .details {
     grid-area: 2 / 2 / 3 / 3;
@@ -113,7 +116,7 @@ const Container = styled.section`
       grid-area: 2 / 2 / 3 / 3;
       color: #756fd6;
       font-size: 1.3em;
-      margin-left: -20px;
+      place-self: start;
     }
   }
   .other-cabins {
@@ -128,6 +131,19 @@ const Container = styled.section`
       margin-bottom: -0.5px;
       font-variant: small-caps;
       text-align: center;
+    }
+  }
+  @media only screen and (max-width: 900px) {
+    grid-template-columns: 1fr;
+    grid-template-rows: 1fr 1fr 1fr 1fr 1fr 1fr;
+    .header-image {
+      grid-area: 1 / 1 / 2 / 2;
+    }
+    .details {
+      grid-area: 2 / 1 / 3 / 2;
+    }
+    .sidebar {
+      grid-area: 3 / 1 / 4 / 2;
     }
   }
 `;
