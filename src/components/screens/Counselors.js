@@ -1,31 +1,32 @@
-import React from 'react'
-import { Thumbnail } from '../ui'
-import { useNavigate } from "react-router-dom"
-import { gql, useQuery} from "@apollo/client"
-import styled from "styled-components"
+import React from "react";
+import { Thumbnail } from "../ui";
+import { useNavigate } from "react-router-dom";
+import { gql, useQuery } from "@apollo/client";
+import styled from "styled-components";
 
 const QUERY = gql`
- query {
-	allCounselors {
-    id
-    name
-    rank
-    photo {
-      thumb
+  query {
+    allCounselors {
+      id
+      name
+      rank
+      photo {
+        thumb
+      }
     }
   }
-}
-`
+`;
 
 export const Counselors = () => {
-  let navigate = useNavigate()
-  const {data, loading} = useQuery(QUERY)
-  if (loading) return <p>Loading...</p>
+  let navigate = useNavigate();
+  const { data, loading } = useQuery(QUERY);
+  if (loading) return <p>Loading...</p>;
   return (
     <Container>
-      <div className="header"><h1>Camp Lambda Counselors</h1></div>
-      
-      
+      <div className="header">
+        <h1>Camp Lambda Counselors</h1>
+      </div>
+
       {data.allCounselors.map((counselor, i) => (
         <Thumbnail
           key={i}
@@ -33,16 +34,15 @@ export const Counselors = () => {
           navigate={navigate}
         >
           <div className="card">
-          <img src={counselor.photo.thumb} />
-          <h2>{counselor.name}</h2>
-          <p>{counselor.rank.replace("_", " ")}</p>
+            <img src={counselor.photo.thumb} alt={counselor.name} />
+            <h2>{counselor.name}</h2>
+            <p>{counselor.rank.replace("_", " ")}</p>
           </div>
         </Thumbnail>
       ))}
-
     </Container>
-  )
-} 
+  );
+};
 
 const Container = styled.section`
   display: grid;
@@ -70,10 +70,10 @@ const Container = styled.section`
     text-align: center;
   }
   .card {
-    background-color: #FAFAFC;
+    background-color: #fafafc;
     align-items: center;
     border-radius: 1em;
-    border: 1px solid #D3D3D3;
+    border: 1px solid #d3d3d3;
   }
   @media only screen and (max-width: 748px) {
     grid-template-columns: repeat(1, 1fr);
@@ -81,4 +81,4 @@ const Container = styled.section`
       grid-area: 1 / 1 / 2/ 2;
     }
   }
-` 
+`;
