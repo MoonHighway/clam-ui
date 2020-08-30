@@ -38,7 +38,7 @@ export const CounselorDetails = () => {
       <img
         src={counselor.photo.full}
         className="counselor"
-        alt={`${counselor.photo.name}`}
+        alt={counselor.photo.name}
       />
       <section className="details">
         <h1>{counselor.name}</h1>
