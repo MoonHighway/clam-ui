@@ -1,9 +1,13 @@
-import React from 'react'
-import { BackLink } from '../ui'
+import React from "react";
+import { BackLink } from "../ui";
+import { useParams } from "react-router-dom";
 
-export const Cabin = ({ match }) => (
-  <section>
-    <h1>Cabin Screen: {match.params.animal}</h1>
-    <BackLink />
-  </section>
-)
+export const Cabin = () => {
+  let { animal } = useParams();
+  return (
+    <section>
+      <h1>Cabin Screen: {animal}</h1>
+      <BackLink />
+    </section>
+  );
+};
