@@ -45,7 +45,6 @@ export const Cabin = () => {
       <img
         src={cabin.photo.full}
         alt={cabin.name}
-        height={200}
         className="header-image"
       />
       <section className="details">
@@ -86,7 +85,7 @@ export const Cabin = () => {
 const Container = styled.section`
   display: grid;
   grid-template-columns: 0.25fr 1fr 0.5fr 0.25fr;
-  grid-template-rows: 100px 500px 1fr;
+  grid-template-rows: 100px 300px 1fr;
   header {
     grid-area: 1 / 1 / 2 / 5;
   }

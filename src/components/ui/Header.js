@@ -3,29 +3,30 @@ import styled from "styled-components"
 import logo from "../../assets/logo.png"
 import { FaCalendar } from "react-icons/fa";
 import { HiSparkles, HiOutlineUserGroup } from "react-icons/hi"
+import { useNavigate } from "react-router-dom"
 
 export const Header = () => {
+    let navigate = useNavigate()
     return (
         <Container>
-            <div class="logo">
-                <img src={logo} />
+            <div className="logo">
+                <img src={logo} onClick={() => navigate(`/`)} />
             </div>
             <div class="schedule-link">
-                <a href="#"><FaCalendar />&nbsp;My Schedule</a>
+                <a href="#" onClick={() => alert(`TODO: Build Schedule`)}><FaCalendar />&nbsp;My Schedule</a>
             </div>
             <div class="activities-link">
-                <a href="#"><HiSparkles />&nbsp;Activities</a>
+                <a href="#" onClick={() => alert(`TODO: Build Activities`)}><HiSparkles />&nbsp;Activities</a>
             </div>
             <div class="counselors-link">
-                <a href="#"><HiOutlineUserGroup />&nbsp;Counselors</a>
+                <a href="#" onClick={() => navigate(`/counselors`)}><HiOutlineUserGroup />&nbsp;Counselors</a>
             </div>
             <div class="account-link">
-                <a href="#">TODO: Account</a>
+                <a href="#" onClick={() => alert(`TODO: Build Account Page`)}>TODO: Account</a>
             </div>
         </Container>
     )
 }
-
 
 const Container = styled.header`
     display: grid;
