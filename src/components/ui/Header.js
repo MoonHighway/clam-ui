@@ -1,27 +1,67 @@
 import React from "react"
 import styled from "styled-components"
+import logo from "../../assets/logo.png"
+import { FaCalendar } from "react-icons/fa";
+import { HiSparkles, HiOutlineUserGroup } from "react-icons/hi"
+import { useNavigate } from "react-router-dom"
 
 export const Header = () => {
+    let navigate = useNavigate()
     return (
         <Container>
-            <a href="#" className="logo">Camp Lambda</a>
-            <nav>
-                <ul>
-                    <li><a href="#">My Schedule</a></li>
-                    <li><a href="#">Activities</a></li>
-                    <li><a href="#">Counselors</a></li>
-                </ul>
-            </nav>
-            <a href="#">Account</a>
+            <div className="logo">
+                <img src={logo} onClick={() => navigate(`/`)} />
+            </div>
+            <div class="schedule-link">
+                <a href="#" onClick={() => alert(`TODO: Build Schedule`)}><FaCalendar />&nbsp;My Schedule</a>
+            </div>
+            <div class="activities-link">
+                <a href="#" onClick={() => alert(`TODO: Build Activities`)}><HiSparkles />&nbsp;Activities</a>
+            </div>
+            <div class="counselors-link">
+                <a href="#" onClick={() => navigate(`/counselors`)}><HiOutlineUserGroup />&nbsp;Counselors</a>
+            </div>
+            <div class="account-link">
+                <a href="#" onClick={() => alert(`TODO: Build Account Page`)}>TODO: Account</a>
+            </div>
         </Container>
     )
 }
 
-
 const Container = styled.header`
-    background-color: black;
-    grid-area: 1 / 1 / 3 / 5;
-    li {
-        list-style-type: none;
+    display: grid;
+    grid-template-columns: 1.25fr 0.5fr 0.5fr 0.5fr 1fr;
+    grid-template-rows: 100px;
+    grid-gap: 1em;
+    align-items: center;
+    text-align: center;
+    background-color: white;
+    a {
+        color: gray;
+        font-weight: bold;
+        text-decoration: none;
+        transition: background-color .5s;
+    }
+    a:hover {
+        color: #2e4df3;
+    }
+    .logo {
+        grid-column: 1;
+        justify-self: start;
+        img {
+            width: 275px;
+        }
+    }
+    .schedule-link {
+        grid-column: 2;
+    }
+    .activities-link {
+        grid-column: 3
+    }
+    .counselors-link {
+        grid-column: 4;
+    }
+    .account-link {
+        grid-column: 5;
     }
 `

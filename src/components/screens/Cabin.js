@@ -45,7 +45,6 @@ export const Cabin = () => {
       <img
         src={cabin.photo.full}
         alt={cabin.name}
-        height={200}
         className="header-image"
       />
       <section className="details">
@@ -85,48 +84,49 @@ export const Cabin = () => {
 
 const Container = styled.section`
   display: grid;
-  grid-template-areas: 
-    "header header header header"
-    ". image image ."
-    ". details sidebar ."
   grid-template-columns: 0.25fr 1fr 0.5fr 0.25fr;
-  grid-template-rows: 100px 0.5fr 1fr;
+  grid-template-rows: 100px 300px 1fr;
+  header {
+    grid-area: 1 / 1 / 2 / 5;
+  }
   .header-image {
-    grid-area: image;
+    grid-area: 2 / 2 / 3 / 4;
     height: 500px;
     justify-self: center;
   }
   .details {
-    grid-area: details;
+    grid-area: 3 / 2 / 4 / 3;
     background-color: #fafafc;
     border-radius: 0 0 0 1em;
     padding: 1em;
   }
   .sidebar {
-    grid-area: sidebar;
+    grid-area: 3 / 3 / 4 / 4;
     display: grid;
     grid-template-columns: 1fr 1fr;
     grid-template-rows: 0.25fr 1fr auto;
     img {
       border-radius: 50%;
       height: 100px;
+      grid-area: 2 / 1 / 3 / 2;
     }
     background-color: #fafafc;
     border-radius: 0 0 1em 0;
     padding: 1em;
     .campers {
-      
+      grid-area: 3 / 1 / 4 / 2;
     }
     h4 {
-      
+      grid-area: 2 / 2 / 3 / 3;
       color: #756fd6;
       font-size: 1.3em;
-      
+      place-self: start;
     }
   }
   .other-cabins {
     display: grid;
-
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+    grid-template-rows; 1fr 1fr;
     img {
       height: 100px;
     }
@@ -135,19 +135,6 @@ const Container = styled.section`
       margin-bottom: -0.5px;
       font-variant: small-caps;
       text-align: center;
-    }
-  }
-  @media only screen and (max-width: 900px) {
-    grid-template-columns: 1fr;
-    grid-template-rows: 1fr 1fr 1fr 1fr 1fr 1fr;
-    .header-image {
-      grid-area: 1 / 1 / 2 / 2;
-    }
-    .details {
-      grid-area: 2 / 1 / 3 / 2;
-    }
-    .sidebar {
-      grid-area: 3 / 1 / 4 / 2;
     }
   }
 `;

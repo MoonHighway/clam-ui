@@ -4,6 +4,7 @@ import { gql, useQuery } from "@apollo/client";
 import styled from "styled-components";
 import { useParams, useNavigate } from "react-router-dom";
 import { GiWoodCabin } from "react-icons/gi";
+import { Header } from "../ui/Header";
 
 const COUNSELOR_QUERY = gql`
   query Counselor($id: ID!) {
@@ -35,6 +36,7 @@ export const CounselorDetails = () => {
   return (
     <Container>
       <BackLink />
+      <Header />
       <img
         src={counselor.photo.full}
         className="counselor"
@@ -76,8 +78,11 @@ export const CounselorDetails = () => {
 const Container = styled.section`
   display: grid;
   column-gap: 0;
-  grid-template-columns: 0.5fr 0.8 1.2fr 0.5fr;
-  grid-template-rows: 400px auto;
+  grid-template-columns: 0.5fr 0.8fr 1.2fr 0.5fr;
+  grid-template-rows: 100px 400px auto;
+  header {
+    grid-area: 1 / 1 / 2 / 5;
+  }
   h1 {
     font-size: 2em;
   }
@@ -108,7 +113,7 @@ const Container = styled.section`
     align-self: center;
   }
   .activities {
-    grid-area: 2 / 2 / 4 / 4;
+    grid-area: 3 / 2 / 4 / 4;
     h2 {
       font-size: 1.5em;
     }
