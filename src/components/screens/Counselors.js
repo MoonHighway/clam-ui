@@ -74,6 +74,24 @@ const Container = styled.section`
     border-radius: 1em;
     border: 1px solid #d3d3d3;
   }
+  @media only screen and (max-width: 1270px) {
+    grid-template-columns: repeat(4, 25%);
+    .thumbnail {
+      justify-self: center;
+      height: 16em;
+      width: 15em;
+      margin: 1em;
+    }
+  }
+  @media only screen and (max-width: 1000px) {
+    grid-template-columns: repeat(2, 50%);
+    .thumbnail {
+      justify-self: center;
+      height: 16em;
+      width: 20em;
+      margin: 1em;
+    }
+  }
   @media only screen and (max-width: 748px) {
     grid-template-columns: repeat(1, 1fr);
     .header {

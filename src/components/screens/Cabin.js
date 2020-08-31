@@ -2,6 +2,7 @@ import React from "react";
 import { useParams, useNavigate } from "react-router-dom";
 import { gql, useQuery } from "@apollo/client";
 import styled from "styled-components";
+import { Header } from "../ui/Header"
 
 const CABIN_QUERY = gql`
   query($animal: ID!) {
@@ -40,6 +41,7 @@ export const Cabin = () => {
 
   return (
     <Container>
+      <Header />
       <img
         src={cabin.photo.full}
         alt={cabin.name}
@@ -83,46 +85,48 @@ export const Cabin = () => {
 
 const Container = styled.section`
   display: grid;
+  grid-template-areas: 
+    "header header header header"
+    ". image image ."
+    ". details sidebar ."
   grid-template-columns: 0.25fr 1fr 0.5fr 0.25fr;
-  grid-template-rows: 0.5fr 1fr;
+  grid-template-rows: 100px 0.5fr 1fr;
   .header-image {
-    grid-area: 1 / 2 / 2 / 4;
+    grid-area: image;
     height: 500px;
     justify-self: center;
   }
   .details {
-    grid-area: 2 / 2 / 3 / 3;
+    grid-area: details;
     background-color: #fafafc;
     border-radius: 0 0 0 1em;
     padding: 1em;
   }
   .sidebar {
-    grid-area: 2 / 3 / 3 / 4;
+    grid-area: sidebar;
     display: grid;
     grid-template-columns: 1fr 1fr;
     grid-template-rows: 0.25fr 1fr auto;
     img {
       border-radius: 50%;
       height: 100px;
-      grid-area: 2 / 1 / 3 / 2;
     }
     background-color: #fafafc;
     border-radius: 0 0 1em 0;
     padding: 1em;
     .campers {
-      grid-area: 3 / 1 / 4 / 2;
+      
     }
     h4 {
-      grid-area: 2 / 2 / 3 / 3;
+      
       color: #756fd6;
       font-size: 1.3em;
-      place-self: start;
+      
     }
   }
   .other-cabins {
     display: grid;
-    grid-template-columns: 1fr 1fr 1fr 1fr;
-    grid-template-rows; 1fr 1fr;
+
     img {
       height: 100px;
     }
