@@ -74,7 +74,7 @@ const Container = styled.section`
     border-radius: 1em;
     border: 1px solid #d3d3d3;
   }
-  @media only screen and (max-width: 1270px) {
+  @media only screen and (max-width: 1400px) {
     grid-template-columns: repeat(4, 25%);
     .thumbnail {
       justify-self: center;
