@@ -1,23 +1,13 @@
 import { createGlobalStyle } from "styled-components";
 
 export const GlobalStyle = createGlobalStyle`
-  @font-face {
-    font-family: "Roboto";
-    src: url("./fonts/Roboto-Regular.ttf");
-    font-weight: 400;
-  }
-  @font-face {
-    font-family: "Catamaran";
-    src: url("./fonts/Catamaran-ExtraBold.ttf");
-    font-weight: 700;
-  }
   body {
-    font-family: 'RobotoDraft', 'Roboto', sans-serif;
+    font-family: 'Roboto', sans-serif;
     background-color: #f2f2f2;
     padding: 0;
     margin: 0;
   }
-  h1 {
+  h1, h2, h3, h4 {
     font-family: "Catamaran";
   }
 `;
