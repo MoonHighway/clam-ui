@@ -3,7 +3,7 @@ import { Thumbnail } from "../ui";
 import { useNavigate } from "react-router-dom";
 import { gql, useQuery } from "@apollo/client";
 import styled from "styled-components";
-import { Header } from "../ui/Header"
+import { Header } from "../ui/Header";
 
 const QUERY = gql`
   query {

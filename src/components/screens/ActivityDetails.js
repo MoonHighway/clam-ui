@@ -1,20 +1,9 @@
-import React from 'react'
-import {
-  BackLink,
-  SportPanel,
-  NaturePanel,
-  ArtsCraftsPanel,
-  GamePanel
-} from '../ui'
+import React from "react";
 
-export const ActivityDetails = ({ id }) => (
-  <section>
-    <h1>Activity Details</h1>
-    <p>activity id: {id}</p>
-    <SportPanel />
-    <NaturePanel />
-    <ArtsCraftsPanel />
-    <GamePanel />
-    <BackLink />
-  </section>
-)
+export function ActivityDetails() {
+  return (
+    <section>
+      <h1>TODO: Build Activities</h1>
+    </section>
+  );
+}

@@ -2,7 +2,6 @@ import React from "react";
 import { gql, useQuery } from "@apollo/client";
 import styled from "styled-components";
 import { useParams, useNavigate } from "react-router-dom";
-import { GiWoodCabin } from "react-icons/gi";
 import { Header } from "../ui/Header";
 
 const COUNSELOR_QUERY = gql`
@@ -34,7 +33,7 @@ export const CounselorDetails = () => {
   let counselor = data.findCounselorById;
   return (
     <Container>
-      <div></div>
+      <BackLink />
       <Header />
       <img
         src={counselor.photo.full}
@@ -89,9 +88,9 @@ const Container = styled.section`
     font-size: 1em;
   }
   .rank {
-    color: gray;
+    color: #756fd6;
     font-weight: bold;
-    font-size: 1.2em;
+    font-size: 1.5em;
     margin-top: -20px;
   }
 

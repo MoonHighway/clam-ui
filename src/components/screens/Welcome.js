@@ -3,28 +3,24 @@ import styled from "styled-components";
 import logo from "../../assets/lambda.png";
 import "../../fonts/Catamaran-ExtraBold.ttf";
 import "../../fonts/Roboto-Regular.ttf";
-import { Link } from "react-router-dom"
-import { gql, useQuery} from "@apollo/client"
+import { Link } from "react-router-dom";
+import { gql, useQuery } from "@apollo/client";
 
 const QUERY = gql`
   query {
     totalCounselors
   }
-`
+`;
 
 export const Welcome = () => {
-  const {loading, data} = useQuery(QUERY)
-  if(loading) return <p>Loading...</p>;
+  const { loading, data } = useQuery(QUERY);
+  if (loading) return <p>Loading...</p>;
   return (
-  <Container>
+    <Container>
       <div className="links">
-        <Link to={"/counselors"}>
-          {data.totalCounselors} Counselors
-        </Link>
+        <Link to={"/counselors"}>{data.totalCounselors} Counselors</Link>
         <br />
-        <Link to={"/activities"}>
-          114 Activities
-        </Link>
+        <Link to={"/activities"}>114 Activities</Link>
       </div>
       <div className="login-button">
         <button onClick={() => alert("Implement Login")}>
@@ -36,9 +32,9 @@ export const Welcome = () => {
         <img src={logo} height={200} alt="camp lambda logo" />
       </div>
     </Container>
-  )
-}
-  
+  );
+};
+
 const Container = styled.section`
   display: grid;
   grid-template-columns: 1fr 2fr;
@@ -49,6 +45,13 @@ const Container = styled.section`
     text-align: center;
     font-size: 1.5em;
     align-self: center;
+    a {
+      color: #10a5f5;
+      text-decoration: none;
+    }
+    a:hover {
+      color: #0859c6;
+    }
   }
   .login-button {
     grid-area: 2 / 1 / 3 / 2;
