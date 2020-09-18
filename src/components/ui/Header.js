@@ -12,25 +12,25 @@ export const Header = () => {
       <div className="logo">
         <img src={logo} onClick={() => navigate(`/`)} />
       </div>
-      <div class="schedule-link">
+      <div className="schedule-link">
         <a href="#" onClick={() => navigate(`/schedule`)}>
           <FaCalendar />
           &nbsp;My Schedule
         </a>
       </div>
-      <div class="activities-link">
+      <div className="activities-link">
         <a href="#" onClick={() => navigate(`/activities`)}>
           <HiSparkles />
           &nbsp;Activities
         </a>
       </div>
-      <div class="counselors-link">
+      <div className="counselors-link">
         <a href="#" onClick={() => navigate(`/counselors`)}>
           <HiOutlineUserGroup />
           &nbsp;Counselors
         </a>
       </div>
-      <div class="account-link">
+      <div className="account-link">
         <a href="#" onClick={() => navigate(`/account`)}>
           My Account
         </a>
@@ -42,7 +42,6 @@ export const Header = () => {
 const Container = styled.header`
   display: grid;
   grid-template-columns: 1.25fr 0.5fr 0.5fr 0.5fr 1fr;
-  grid-template-rows: 100px;
   grid-gap: 1em;
   align-items: center;
   text-align: center;
