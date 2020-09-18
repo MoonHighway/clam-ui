@@ -1,7 +1,9 @@
-import React from 'react'
+import React from "react";
 
 export const Account = () => (
   <section>
-    <h2>Account Form</h2>
+    <h2>Create Account</h2>
+    <button>GitHub</button>
+    <p>or</p>
   </section>
-)
+);

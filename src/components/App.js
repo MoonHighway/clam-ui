@@ -12,6 +12,8 @@ import {
   Schedule
 } from "./screens";
 
+import { Login, Register } from "./forms";
+
 export default function App() {
   return (
     <Router>
@@ -21,7 +23,10 @@ export default function App() {
         <Route element={<Counselors />} path="counselors" />
         <Route element={<ActivityDetails />} path="activity/:id" />
         <Route element={<Activities />} path="activities" />
-        <Route element={<Authorization />} path="account" />
+        <Route element={<Authorization />} path="account">
+          <Route element={<Login />} path="/" />
+          <Route element={<Register />} path="register" />
+        </Route>
         <Route element={<Cabin />} path="cabin/:animal" />
         <Route element={<Welcome />} path="/" />
       </Routes>

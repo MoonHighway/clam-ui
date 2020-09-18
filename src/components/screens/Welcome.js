@@ -12,7 +12,7 @@ const QUERY = gql`
   }
 `;
 
-export const Welcome = () => {
+export function Welcome() {
   const { loading, data } = useQuery(QUERY);
   if (loading) return <p>Loading...</p>;
   return (
@@ -33,7 +33,7 @@ export const Welcome = () => {
       </div>
     </Container>
   );
-};
+}
 
 const Container = styled.section`
   display: grid;
