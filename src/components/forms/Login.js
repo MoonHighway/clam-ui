@@ -1,21 +1,53 @@
 import React from "react";
 import styled from "styled-components";
 import { FaGithub } from "react-icons/fa";
+import { gql, useMutation } from "@apollo/client";
+import { useInput } from "../../hooks";
+
+const LOG_IN = gql`
+  mutation LogIn($email: String!, $password: String!) {
+    logIn(email: $email, password: $password) {
+      camper {
+        email
+        name
+      }
+      token
+    }
+  }
+`;
 
 export function Login() {
+  const [logIn] = useMutation(LOG_IN);
+  const [emailProps, resetEmail] = useInput("");
+  const [passwordProps, resetPassword] = useInput("");
+
+  const submit = e => {
+    e.preventDefault();
+    alert(emailProps.value, passwordProps.value);
+    // logIn({
+    //   variables: {
+    //     email: emailProps.value,
+    //     password: passwordProps.value
+    //   }
+    // });
+
+    resetEmail();
+    resetPassword();
+  };
+
   return (
     <Container>
-      <form>
+      <form onSubmit={submit}>
         <div>
-          <label>Email</label>
+          <label for="email">Email</label>
           <br />
-          <input type="email" />
+          <input type="email" id="email" {...emailProps} />
           <br />
-          <label>Password</label>
+          <label for="password">Password</label>
           <br />
-          <input type="password" />
+          <input type="password" id="password" {...passwordProps} />
         </div>
-        <button>Log In</button>
+        <button type="submit">Log In</button>
         <button className="githubButton">
           <FaGithub />
           &nbsp;&nbsp;Log In with GitHub

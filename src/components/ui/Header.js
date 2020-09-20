@@ -30,9 +30,9 @@ export const Header = () => {
           &nbsp;Counselors
         </a>
       </div>
-      <div className="account-link">
+      <div>
         <a href="#" onClick={() => navigate(`/account`)}>
-          My Account
+          Log In
         </a>
       </div>
     </Container>

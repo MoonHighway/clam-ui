@@ -2,6 +2,7 @@ import React from "react";
 import { useMutation, gql } from "@apollo/client";
 import styled from "styled-components";
 import { FaGithub } from "react-icons/fa";
+import { useInput } from "../../hooks";
 
 const CREATE_CAMPER = gql`
   mutation CreateCamper($input: CreateCamperInput!) {
@@ -14,6 +15,27 @@ const CREATE_CAMPER = gql`
 
 export function Register() {
   const [setCamper] = useMutation(CREATE_CAMPER);
+  const [nameProps, resetName] = useInput("");
+  const [emailProps, resetEmail] = useInput("");
+  const [passwordProps, resetPassword] = useInput("");
+
+  const submit = e => {
+    e.preventDefault();
+    setCamper({
+      variables: {
+        input: {
+          name: nameProps.value,
+          email: emailProps.value,
+          password: passwordProps.value
+        }
+      }
+    });
+
+    resetName();
+    resetEmail();
+    resetPassword();
+  };
+
   return (
     <Container>
       <button className="githubButton">
@@ -21,20 +43,20 @@ export function Register() {
         &nbsp;&nbsp; Sign In with GitHub
       </button>
       <p>or</p>
-      <form>
-        <label>Name</label>
+      <form onSubmit={submit}>
+        <label for="name">Name</label>
         <br />
-        <input type="text" />
+        <input type="text" {...nameProps} id="name" />
         <br />
-        <label>Email</label>
+        <label for="email">Email</label>
         <br />
-        <input type="email" />
+        <input type="email" {...emailProps} id="email" />
 
-        <label>Password</label>
+        <label for="password">Password</label>
         <br />
-        <input type="password" />
+        <input type="password" {...passwordProps} id="password" />
 
-        <button>Create Account</button>
+        <button type="submit">Create Account</button>
       </form>
     </Container>
   );

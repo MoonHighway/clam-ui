@@ -23,6 +23,7 @@ export default function App() {
         <Route element={<Counselors />} path="counselors" />
         <Route element={<ActivityDetails />} path="activity/:id" />
         <Route element={<Activities />} path="activities" />
+        {/* <Route element */}
         <Route element={<Authorization />} path="account">
           <Route element={<Login />} path="/" />
           <Route element={<Register />} path="register" />
