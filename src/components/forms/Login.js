@@ -77,7 +77,7 @@ const Container = styled.section`
     border-bottom: 1px solid #666;
   }
 
-  label {
+  >>>>>>>master label {
     text-transform: uppercase;
     letter-spacing: 0.05em;
   }
