@@ -1,21 +1,52 @@
 import React from "react";
 import styled from "styled-components";
 import { FaGithub } from "react-icons/fa";
+import { gql, useMutation } from "@apollo/client";
+import { useInput } from "../../hooks";
+
+const LOG_IN = gql`
+  mutation LogIn($email: String!, $password: String!) {
+    logIn(email: $email, password: $password) {
+      camper {
+        email
+        name
+      }
+      token
+    }
+  }
+`;
 
 export function Login() {
+  const [logIn] = useMutation(LOG_IN);
+  const [emailProps, resetEmail] = useInput("");
+  const [passwordProps, resetPassword] = useInput("");
+
+  const submit = e => {
+    e.preventDefault();
+    logIn({
+      variables: {
+        email: emailProps.value,
+        password: passwordProps.value
+      }
+    });
+
+    resetEmail();
+    resetPassword();
+  };
+
   return (
     <Container>
-      <form>
+      <form onSubmit={submit}>
         <div>
-          <label>Email</label>
+          <label htmlFor="email">Email</label>
           <br />
-          <input type="email" />
+          <input type="email" id="email" {...emailProps} />
           <br />
-          <label>Password</label>
+          <label htmlFor="password">Password</label>
           <br />
-          <input type="password" />
+          <input type="password" id="password" {...passwordProps} />
         </div>
-        <button>Log In</button>
+        <button type="submit">Log In</button>
         <button className="githubButton">
           <FaGithub />
           &nbsp;&nbsp;Log In with GitHub
@@ -46,7 +77,7 @@ const Container = styled.section`
     border-bottom: 1px solid #666;
   }
 
-  label {
+  >>>>>>>master label {
     text-transform: uppercase;
     letter-spacing: 0.05em;
   }

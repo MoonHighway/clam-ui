@@ -4,6 +4,7 @@ import logo from "../../assets/logo.png";
 import { FaCalendar } from "react-icons/fa";
 import { HiSparkles, HiOutlineUserGroup } from "react-icons/hi";
 import { useNavigate } from "react-router-dom";
+import { CurrentUser } from "./CurrentUser";
 
 export const Header = () => {
   let navigate = useNavigate();
@@ -30,10 +31,8 @@ export const Header = () => {
           &nbsp;Counselors
         </a>
       </div>
-      <div className="account-link">
-        <a href="#" onClick={() => navigate(`/account`)}>
-          Log In
-        </a>
+      <div>
+        <CurrentUser />
       </div>
     </Container>
   );

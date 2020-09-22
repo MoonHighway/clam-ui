@@ -9,7 +9,8 @@ import {
   ActivityDetails,
   Counselors,
   CounselorDetails,
-  Schedule
+  Schedule,
+  Account
 } from "./screens";
 
 import { Login, Register } from "./forms";
@@ -23,7 +24,8 @@ export default function App() {
         <Route element={<Counselors />} path="counselors" />
         <Route element={<ActivityDetails />} path="activity/:id" />
         <Route element={<Activities />} path="activities" />
-        <Route element={<Authorization />} path="account">
+        <Route element={<Account />} path="account" />
+        <Route element={<Authorization />} path="login">
           <Route element={<Login />} path="/" />
           <Route element={<Register />} path="register" />
         </Route>

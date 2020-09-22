@@ -18,13 +18,13 @@ const QUERY = gql`
   }
 `;
 
-export const Counselors = () => {
+export const Counselors = ({ client }) => {
   let navigate = useNavigate();
   const { data, loading } = useQuery(QUERY);
   if (loading) return <p>Loading...</p>;
   return (
     <Container>
-      <Header />
+      <Header client={client} />
       <h1>Counselors</h1>
 
       <div className="counselors">

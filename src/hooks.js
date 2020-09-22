@@ -1,28 +1,36 @@
-import { useState } from 'react'
-import { wsClient } from 'clam-apollo-subscriptions'
+import { useState } from "react";
+//import { wsClient } from "clam-apollo-subscriptions";
 
-export function useConnectionStatus(client = wsClient) {
-  const [status, setStatus] = useState('disconnected')
+export const useInput = initialValue => {
+  const [value, setValue] = useState(initialValue);
+  return [
+    { value, onChange: e => setValue(e.target.value) },
+    () => setValue(initialValue)
+  ];
+};
 
-  client.onConnecting(() => {
-    setStatus('connecting')
-  })
+// export function useConnectionStatus(client = wsClient) {
+//   const [status, setStatus] = useState("disconnected");
 
-  client.onConnected(() => {
-    setStatus('connected')
-  })
+//   client.onConnecting(() => {
+//     setStatus("connecting");
+//   });
 
-  client.onReconnecting(() => {
-    setStatus('reconnecting')
-  })
+//   client.onConnected(() => {
+//     setStatus("connected");
+//   });
 
-  client.onReconnected(() => {
-    setStatus('connected')
-  })
+//   client.onReconnecting(() => {
+//     setStatus("reconnecting");
+//   });
 
-  client.onDisconnected(() => {
-    setStatus('disconnected')
-  })
+//   client.onReconnected(() => {
+//     setStatus("connected");
+//   });
 
-  return status
-}
+//   client.onDisconnected(() => {
+//     setStatus("disconnected");
+//   });
+
+//   return status;
+// }
