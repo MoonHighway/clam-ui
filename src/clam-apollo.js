@@ -1,35 +1,35 @@
-import React from 'react'
+import React from "react";
 import {
   ApolloClient,
   ApolloProvider,
   InMemoryCache,
   HttpLink
-} from '@apollo/client'
-import { setContext } from 'apollo-link-context'
-import { createSubscriptionLink } from './clam-apollo-subscriptions'
+} from "@apollo/client";
+import { setContext } from "apollo-link-context";
+import { createSubscriptionLink } from "./clam-apollo-subscriptions";
 
-const cache = new InMemoryCache()
+const cache = new InMemoryCache();
 const httpLink = new HttpLink({
   uri: process.env.REACT_APP_GRAPHQL_URI
-})
+});
 const authLink = setContext((_, operation) => {
-  const token = localStorage.getItem('token')
+  const token = localStorage.getItem("token");
   if (token) {
     return {
       headers: {
         ...operation.headers,
-        authorization: `Bearer ${token}`
+        authorization: token
       }
-    }
+    };
   } else {
-    return operation
+    return operation;
   }
-})
+});
 
-const httpAuthLink = authLink.concat(httpLink)
-const link = createSubscriptionLink(httpAuthLink)
-const client = new ApolloClient({ cache, link })
+const httpAuthLink = authLink.concat(httpLink);
+const link = createSubscriptionLink(httpAuthLink);
+const client = new ApolloClient({ cache, link });
 
 export default function AppProvider({ children }) {
-  return <ApolloProvider client={client}>{children}</ApolloProvider>
+  return <ApolloProvider client={client}>{children}</ApolloProvider>;
 }

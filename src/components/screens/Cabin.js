@@ -2,7 +2,7 @@ import React from "react";
 import { useParams, useNavigate } from "react-router-dom";
 import { gql, useQuery } from "@apollo/client";
 import styled from "styled-components";
-import { Header } from "../ui/Header"
+import { Header } from "../ui/Header";
 
 const CABIN_QUERY = gql`
   query($animal: ID!) {
@@ -42,11 +42,7 @@ export const Cabin = () => {
   return (
     <Container>
       <Header />
-      <img
-        src={cabin.photo.full}
-        alt={cabin.name}
-        className="header-image"
-      />
+      <img src={cabin.photo.full} alt={cabin.name} className="header-image" />
       <section className="details">
         <h1>
           {cabin.animal.charAt(0).slice().toUpperCase() +

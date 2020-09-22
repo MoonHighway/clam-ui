@@ -42,17 +42,17 @@ export function Register() {
         <FaGithub />
         &nbsp;&nbsp; Sign In with GitHub
       </button>
-      <p>or</p>
+      <p>--or--</p>
       <form onSubmit={submit}>
-        <label for="name">Name</label>
+        <label htmlFor="name">Name</label>
         <br />
         <input type="text" {...nameProps} id="name" />
         <br />
-        <label for="email">Email</label>
+        <label htmlFor="email">Email</label>
         <br />
         <input type="email" {...emailProps} id="email" />
 
-        <label for="password">Password</label>
+        <label htmlFor="password">Password</label>
         <br />
         <input type="password" {...passwordProps} id="password" />
 

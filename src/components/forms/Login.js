@@ -23,13 +23,12 @@ export function Login() {
 
   const submit = e => {
     e.preventDefault();
-    alert(emailProps.value, passwordProps.value);
-    // logIn({
-    //   variables: {
-    //     email: emailProps.value,
-    //     password: passwordProps.value
-    //   }
-    // });
+    logIn({
+      variables: {
+        email: emailProps.value,
+        password: passwordProps.value
+      }
+    });
 
     resetEmail();
     resetPassword();
@@ -39,11 +38,11 @@ export function Login() {
     <Container>
       <form onSubmit={submit}>
         <div>
-          <label for="email">Email</label>
+          <label htmlFor="email">Email</label>
           <br />
           <input type="email" id="email" {...emailProps} />
           <br />
-          <label for="password">Password</label>
+          <label htmlFor="password">Password</label>
           <br />
           <input type="password" id="password" {...passwordProps} />
         </div>

@@ -10,7 +10,7 @@ export function Authorization() {
       <Header />
       <div className="form-holder">
         <div>
-          <NavLink to="/account" className="tab">
+          <NavLink to="/login" className="tab">
             <button className="login">Log In</button>
           </NavLink>
           <NavLink to="register" className="tab">
