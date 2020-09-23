@@ -3,6 +3,7 @@ import styled from "styled-components";
 import { FaGithub } from "react-icons/fa";
 import { gql, useMutation } from "@apollo/client";
 import { useInput } from "../../hooks";
+import { useNavigate } from "react-router-dom";
 
 const LOG_IN = gql`
   mutation LogIn($email: String!, $password: String!) {
@@ -17,7 +18,13 @@ const LOG_IN = gql`
 `;
 
 export function Login() {
-  const [logIn] = useMutation(LOG_IN);
+  const navigate = useNavigate();
+  const [logIn, { error }] = useMutation(LOG_IN, {
+    onCompleted({ logIn }) {
+      localStorage.setItem("token", logIn.token);
+      navigate(`/account`);
+    }
+  });
   const [emailProps, resetEmail] = useInput("");
   const [passwordProps, resetPassword] = useInput("");
 
@@ -38,6 +45,7 @@ export function Login() {
     <Container>
       <form onSubmit={submit}>
         <div>
+          {error ? <p>There was an error. Please try again</p> : null}
           <label htmlFor="email">Email</label>
           <br />
           <input type="email" id="email" {...emailProps} />
