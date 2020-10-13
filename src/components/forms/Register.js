@@ -3,25 +3,34 @@ import { useMutation, gql } from "@apollo/client";
 import styled from "styled-components";
 import { FaGithub } from "react-icons/fa";
 import { useInput } from "../../hooks";
+import { useNavigate } from "react-router-dom";
 
 const CREATE_CAMPER = gql`
   mutation CreateCamper($input: CreateCamperInput!) {
     createCamper(input: $input) {
       email
       name
+      token
     }
   }
 `;
 
 export function Register() {
-  const [setCamper] = useMutation(CREATE_CAMPER);
+  const navigate = useNavigate();
+  const [createCamper, { error }] = useMutation(CREATE_CAMPER, {
+    onCompleted({ createCamper }) {
+      localStorage.setItem("token", createCamper.token);
+      navigate(`/account`);
+    }
+  });
+
   const [nameProps, resetName] = useInput("");
   const [emailProps, resetEmail] = useInput("");
   const [passwordProps, resetPassword] = useInput("");
 
   const submit = e => {
     e.preventDefault();
-    setCamper({
+    createCamper({
       variables: {
         input: {
           name: nameProps.value,
@@ -43,6 +52,7 @@ export function Register() {
         &nbsp;&nbsp; Sign In with GitHub
       </button>
       <p>--or--</p>
+      {error ? <p>There was an error. Please try again</p> : null}
       <form onSubmit={submit}>
         <label htmlFor="name">Name</label>
         <br />
