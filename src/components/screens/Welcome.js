@@ -3,7 +3,7 @@ import styled from "styled-components";
 import logo from "../../assets/lambda.png";
 import "../../fonts/Catamaran-ExtraBold.ttf";
 import "../../fonts/Roboto-Regular.ttf";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { gql, useQuery } from "@apollo/client";
 
 const QUERY = gql`
@@ -14,6 +14,7 @@ const QUERY = gql`
 
 export function Welcome() {
   const { loading, data } = useQuery(QUERY);
+  const navigate = useNavigate();
   if (loading) return <p>Loading...</p>;
   return (
     <Container>
@@ -23,9 +24,7 @@ export function Welcome() {
         <Link to={"/activities"}>114 Activities</Link>
       </div>
       <div className="login-button">
-        <button onClick={() => alert("Implement Login")}>
-          Sign In &nbsp;&gt;
-        </button>
+        <button onClick={() => navigate(`/login`)}>Sign In &nbsp;&gt;</button>
       </div>
       <div className="logo">
         <h1>Camp Lambda</h1>
