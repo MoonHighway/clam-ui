@@ -1,9 +1,9 @@
 import React from "react";
 import styled from "styled-components";
+import { gql, useQuery } from "@apollo/client";
 import { useInput } from "../../hooks";
-import { gql, useQuery, useMutation } from "@apollo/client";
-import { AiOutlineUpload } from "react-icons/ai";
-import { useNavigate } from "react-router-dom";
+import defaultPhoto from "../../assets/default.png";
+import { Header } from "../ui";
 
 const ME = gql`
   query Me {
@@ -13,26 +13,8 @@ const ME = gql`
       photo {
         thumb
       }
-      githubPhoto
       cabin {
-        name
-      }
-    }
-  }
-`;
-
-const CHANGE_ACCOUNT = gql`
-  mutation ChangeAccount($name: String!, $email: ID!) {
-    changeAccount {
-      changeEmail(email: $email) {
-        camper {
-          email
-        }
-      }
-      changeName(name: $name) {
-        camper {
-          name
-        }
+        animal
       }
     }
   }
@@ -41,35 +23,21 @@ const CHANGE_ACCOUNT = gql`
 export function Account() {
   const [nameProps] = useInput("");
   const [emailProps] = useInput("");
-  const navigate = useNavigate();
   const { data, loading } = useQuery(ME);
-  const [setAccountDetails] = useMutation(CHANGE_ACCOUNT, {
-    onCompleted() {
-      navigate(`/`);
-    }
-  });
-
-  const submit = e => {
-    e.preventDefault();
-    setAccountDetails({
-      variables: {
-        name: nameProps.value,
-        email: emailProps.value
-      }
-    });
-  };
-
   if (loading) return <p>Loading...</p>;
 
   return (
     <Container>
-      <h1>Update Account Details</h1>
-      <form onSubmit={submit}>
-        <img src={data.me.photo.thumb} alt={data.me.name} />
-        <button>
-          <AiOutlineUpload />
-          Change Photo
-        </button>
+      <Header />
+
+      <div className="photo-upload">
+        <h1>Update Camper Details</h1>
+        <img
+          src={data.me.photo.thumb ? data.me.photo.thumb : defaultPhoto}
+          width={200}
+        />
+      </div>
+      <form>
         <label htmlFor="name">Name</label>
         <br />
         <input
@@ -87,7 +55,7 @@ export function Account() {
           id="email"
           placeholder={data.me.email}
         />
-
+        <h4>{data.me.cabin.animal.toUpperCase()} CABIN</h4>
         <button type="submit">Update Profile</button>
       </form>
     </Container>
@@ -96,6 +64,21 @@ export function Account() {
 
 const Container = styled.section`
   display: grid;
+  header {
+    grid-area: 1 / 1 / 2 / 5;
+  }
+  grid-template-rows: 100px 500px;
+  grid-template-columns: 0.5fr 0.8fr 1.2fr 0.5fr;
+  .photo-upload {
+    grid-area: 2 / 2 / 3 / 2;
+    a {
+      font-size: 12px;
+    }
+  }
+  form {
+    grid-area: 2 / 3 / 3 / 4;
+    align-self: center;
+  }
   label,
   input {
     margin: 5px;
@@ -126,6 +109,7 @@ const Container = styled.section`
     width: 100%;
     text-align: center;
     height: 45px;
+
     border-radius: 4px;
     color: white;
     margin-top: 20px;
