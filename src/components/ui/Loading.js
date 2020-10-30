@@ -1,7 +1,13 @@
-import React from 'react'
+import React from "react";
+import BounceLoader from "react-spinners/BounceLoader";
 
-export const Image = () => <h3>Loading Image</h3>
+const override = `
+    display: block;
+    margin: 0 auto;
+`;
 
-export const Loading = () => <h3>Loading</h3>
-
-export const LoadingContainer = () => <h3>Loading Container</h3>
+export const Loading = () => (
+  <div>
+    <BounceLoader css={override} size={150} color={"#123abc"} />
+  </div>
+);

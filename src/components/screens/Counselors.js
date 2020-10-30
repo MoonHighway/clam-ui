@@ -4,6 +4,7 @@ import { useNavigate } from "react-router-dom";
 import { gql, useQuery } from "@apollo/client";
 import styled from "styled-components";
 import { Header } from "../ui/Header";
+import { Loading } from "../ui/Loading";
 
 const QUERY = gql`
   query {
@@ -21,7 +22,7 @@ const QUERY = gql`
 export const Counselors = ({ client }) => {
   let navigate = useNavigate();
   const { data, loading } = useQuery(QUERY);
-  if (loading) return <p>Loading...</p>;
+  if (loading) return <Loading />;
   return (
     <Container>
       <Header client={client} />

@@ -2,7 +2,7 @@ import React from "react";
 import { useParams, useNavigate } from "react-router-dom";
 import { gql, useQuery } from "@apollo/client";
 import styled from "styled-components";
-import { Header } from "../ui/Header";
+import { Header, Loading } from "../ui";
 
 const CABIN_QUERY = gql`
   query($animal: ID!) {
@@ -33,7 +33,7 @@ export const Cabin = () => {
   let { animal } = useParams();
   let navigate = useNavigate();
   const { data, loading } = useQuery(CABIN_QUERY, { variables: { animal } });
-  if (loading) return <p>Loading...</p>;
+  if (loading) return <Loading />;
 
   let cabin = data.findCabinByAnimal;
 

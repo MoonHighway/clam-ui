@@ -5,6 +5,7 @@ import "../../fonts/Catamaran-ExtraBold.ttf";
 import "../../fonts/Roboto-Regular.ttf";
 import { Link, useNavigate } from "react-router-dom";
 import { gql, useQuery } from "@apollo/client";
+import { Loading } from "../ui";
 
 const QUERY = gql`
   query {
@@ -15,7 +16,7 @@ const QUERY = gql`
 export function Welcome() {
   const { loading, data } = useQuery(QUERY);
   const navigate = useNavigate();
-  if (loading) return <p>Loading...</p>;
+  if (loading) return <Loading />;
   return (
     <Container>
       <div className="links">

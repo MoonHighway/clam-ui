@@ -4,6 +4,7 @@ import { gql, useQuery } from "@apollo/client";
 import { useInput } from "../../hooks";
 import defaultPhoto from "../../assets/default.png";
 import { Header } from "../ui";
+import { Loading } from "../ui";
 
 const ME = gql`
   query Me {
@@ -24,7 +25,7 @@ export function Account() {
   const uploadFile = useRef();
   const [preview, setPreview] = useState();
   const { data, loading } = useQuery(ME);
-  if (loading) return <p>Loading...</p>;
+  if (loading) return <Loading />;
 
   function selectPhoto() {
     if (uploadFile.current.files && uploadFile.current.files.length) {

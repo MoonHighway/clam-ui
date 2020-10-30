@@ -4,6 +4,7 @@ import { ImExit } from "react-icons/im";
 import { useNavigate } from "react-router-dom";
 import { gql, useQuery, useApolloClient } from "@apollo/client";
 import styled from "styled-components";
+import { Loading } from "./Loading";
 
 const ME_QUERY = gql`
   query {
@@ -25,7 +26,7 @@ export function CurrentUser() {
   }
 
   if (loading) {
-    return <p>Loading...</p>;
+    return <Loading />;
   } else if (data.me == null) {
     return (
       <>
