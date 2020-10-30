@@ -9,11 +9,7 @@ const ME_QUERY = gql`
   query {
     me {
       name
-      photo {
-        full
-        thumb
-      }
-      githubPhoto
+      photo
     }
   }
 `;
@@ -47,9 +43,7 @@ export function CurrentUser() {
   } else if (data.me !== null) {
     return (
       <Container>
-        <img
-          src={data.me.photo.thumb ? data.me.photo.thumb : data.me.githubPhoto}
-        />
+        <img src={data.me.photo} />
         <div>
           <h3>{data.me.name}</h3>
           <a onClick={() => navigate(`/account`)}>

@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState, useRef } from "react";
 import styled from "styled-components";
 import { gql, useQuery } from "@apollo/client";
 import { useInput } from "../../hooks";
@@ -10,9 +10,7 @@ const ME = gql`
     me {
       name
       email
-      photo {
-        thumb
-      }
+      photo
       cabin {
         animal
       }
@@ -23,8 +21,20 @@ const ME = gql`
 export function Account() {
   const [nameProps] = useInput("");
   const [emailProps] = useInput("");
+  const uploadFile = useRef();
+  const [preview, setPreview] = useState();
   const { data, loading } = useQuery(ME);
   if (loading) return <p>Loading...</p>;
+
+  function selectPhoto() {
+    if (uploadFile.current.files && uploadFile.current.files.length) {
+      let reader = new FileReader();
+      reader.onload = e => {
+        setPreview(e.target.result);
+      };
+      reader.readAsDataURL(uploadFile.current.files[0]);
+    }
+  }
 
   return (
     <Container>
@@ -32,10 +42,8 @@ export function Account() {
 
       <div className="photo-upload">
         <h1>Update Camper Details</h1>
-        <img
-          src={data.me.photo.thumb ? data.me.photo.thumb : defaultPhoto}
-          width={200}
-        />
+        <img src={preview ? preview : data.me.photo} width={200} />
+        <input type="file" ref={uploadFile} onChange={selectPhoto} />
       </div>
       <form>
         <label htmlFor="name">Name</label>
