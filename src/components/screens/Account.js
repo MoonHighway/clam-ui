@@ -4,6 +4,7 @@ import { gql, useQuery } from "@apollo/client";
 import { useInput } from "../../hooks";
 import defaultPhoto from "../../assets/default.png";
 import { Header, Loading } from "../ui";
+import { useLocation } from "react-router-dom";
 
 const ME = gql`
   query Me {
@@ -24,6 +25,7 @@ export function Account() {
   const uploadFile = useRef();
   const [preview, setPreview] = useState();
   const { data, loading } = useQuery(ME);
+  const location = useLocation();
   if (loading) return <Loading />;
 
   function selectPhoto() {
@@ -35,11 +37,12 @@ export function Account() {
       reader.readAsDataURL(uploadFile.current.files[0]);
     }
   }
+  const photoFile = location.state && location.state.photoToUpload
+  const photoSrc = location.state && location.state.photoSrc
 
   return (
     <Container>
       <Header />
-
       <div className="photo-upload">
         <h1>Update Camper Details</h1>
         <img src={preview ? preview : data.me.photo ? data.me.photo : defaultPhoto} width={200} alt="user" />
