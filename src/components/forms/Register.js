@@ -8,8 +8,10 @@ import { useNavigate } from "react-router-dom";
 const CREATE_CAMPER = gql`
   mutation CreateCamper($input: CreateCamperInput!) {
     createCamper(input: $input) {
-      email
-      name
+      camper {
+        email
+        name
+      }
       token
     }
   }

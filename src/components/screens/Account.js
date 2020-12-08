@@ -3,15 +3,14 @@ import styled from "styled-components";
 import { gql, useQuery } from "@apollo/client";
 import { useInput } from "../../hooks";
 import defaultPhoto from "../../assets/default.png";
-import { Header } from "../ui";
-import { Loading } from "../ui";
+import { Header, Loading } from "../ui";
 
 const ME = gql`
   query Me {
     me {
       name
       email
-      photo
+      photo 
       cabin {
         animal
       }
@@ -43,7 +42,7 @@ export function Account() {
 
       <div className="photo-upload">
         <h1>Update Camper Details</h1>
-        <img src={preview ? preview : data.me.photo} width={200} />
+        <img src={preview ? preview : data.me.photo ? data.me.photo : defaultPhoto} width={200} alt="user" />
         <input type="file" ref={uploadFile} onChange={selectPhoto} />
       </div>
       <form>
